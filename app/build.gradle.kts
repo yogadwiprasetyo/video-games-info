@@ -49,35 +49,45 @@ dependencies {
     val retrofitVersion = "2.9.0"
     val gsonVersion = "2.10.1"
     val okhttpVersion = "4.11.0"
+    val rxBindingVersion = "4.0.0"
+    val navVersion = "2.7.4"
 
+    // Default
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
+    // Jetpack Libraries
+    // Paging3
     implementation("androidx.paging:paging-runtime-ktx:$pagingVersion")
-
-    implementation("io.insert-koin:koin-android:$koinAndroidVersion")
-
+    // Navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
+    implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
+    // Lifecycle (ViewModel & LiveData)
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
-
+    // Room
     implementation("androidx.room:room-runtime:$roomVersion")
     ksp("androidx.room:room-compiler:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
     implementation("androidx.room:room-paging:$roomVersion")
 
-    implementation("androidx.paging:paging-runtime-ktx:$pagingVersion")
-
+    // Third-party Libraries
+    // Koin (Dependency Injection)
+    implementation("io.insert-koin:koin-android:$koinAndroidVersion")
+    // Glide (Image)
     implementation("com.github.bumptech.glide:glide:$glideVersion")
-
+    // Network (Retrofit, GSON, OkHttp3)
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation("com.google.code.gson:gson:$gsonVersion")
     implementation(platform("com.squareup.okhttp3:okhttp-bom:$okhttpVersion"))
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor")
+    // RxBinding (Reactive)
+    implementation("com.jakewharton.rxbinding4:rxbinding:$rxBindingVersion")
 
-
+    // Testing
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
