@@ -2,22 +2,22 @@ package technical.test.yprsty.data.source.remote.response
 
 import com.google.gson.annotations.SerializedName
 
-data class ResponseMovies(
+data class ResponseGames(
 
 	@field:SerializedName("next")
-	val next: String,
+	val next: String?,
 
 	@field:SerializedName("previous")
-	val previous: String,
+	val previous: String?,
 
 	@field:SerializedName("count")
 	val count: Int,
 
 	@field:SerializedName("results")
-	val results: List<ResultsItem>
+	val results: List<GameItem>
 )
 
-data class ResultsItem(
+data class GameItem(
 
 	@field:SerializedName("background_image")
 	val backgroundImage: String,

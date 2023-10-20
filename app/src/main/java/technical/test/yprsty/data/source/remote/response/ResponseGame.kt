@@ -19,8 +19,8 @@ data class ResponseGame(
 	@field:SerializedName("playtime")
 	val playtime: Int,
 
-	@field:SerializedName("ratings_count")
-	val ratingsCount: Int,
+	@field:SerializedName("rating")
+	val rating: Int,
 
 	@field:SerializedName("released")
 	val released: String
