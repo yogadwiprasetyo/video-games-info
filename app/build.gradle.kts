@@ -47,7 +47,6 @@ dependencies {
     val roomVersion = "2.6.0"
     val glideVersion = "4.16.0"
     val retrofitVersion = "2.9.0"
-    val gsonVersion = "2.10.1"
     val okhttpVersion = "4.11.0"
     val rxBindingVersion = "4.0.0"
     val navVersion = "2.7.4"
@@ -80,7 +79,7 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:$glideVersion")
     // Network (Retrofit, GSON, OkHttp3)
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
-    implementation("com.google.code.gson:gson:$gsonVersion")
+    implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
     implementation(platform("com.squareup.okhttp3:okhttp-bom:$okhttpVersion"))
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor")
