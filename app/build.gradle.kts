@@ -50,6 +50,7 @@ dependencies {
     val okhttpVersion = "4.11.0"
     val rxBindingVersion = "4.0.0"
     val navVersion = "2.7.4"
+    val timberVersion = "5.0.1"
 
     // Default
     implementation("androidx.core:core-ktx:1.12.0")
@@ -85,6 +86,8 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor")
     // RxBinding (Reactive)
     implementation("com.jakewharton.rxbinding4:rxbinding:$rxBindingVersion")
+    // Timber
+    implementation("com.jakewharton.timber:timber:$timberVersion")
 
     // Testing
     testImplementation("junit:junit:4.13.2")
