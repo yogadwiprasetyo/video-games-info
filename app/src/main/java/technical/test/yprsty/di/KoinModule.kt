@@ -7,11 +7,13 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import technical.test.yprsty.data.GameRepository
 import technical.test.yprsty.data.paging.GamePagingSource
 import technical.test.yprsty.data.source.locale.LocaleDataSource
 import technical.test.yprsty.data.source.locale.room.GameDatabase
 import technical.test.yprsty.data.source.remote.RemoteDataSource
 import technical.test.yprsty.data.source.remote.network.ApiService
+import technical.test.yprsty.domain.repository.IGameRepository
 import java.util.concurrent.TimeUnit
 
 val databaseModule = module {
@@ -55,6 +57,9 @@ val dataLayerModule = module {
     }
     factory {
         GamePagingSource(get())
+    }
+    single<IGameRepository> {
+        GameRepository(get(), get(), get())
     }
 }
 
