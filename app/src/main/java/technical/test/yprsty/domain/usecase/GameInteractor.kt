@@ -1,4 +1,20 @@
 package technical.test.yprsty.domain.usecase
 
-class GameInteractor {
+import androidx.paging.PagingData
+import kotlinx.coroutines.flow.Flow
+import technical.test.yprsty.domain.model.Game
+import technical.test.yprsty.domain.repository.IGameRepository
+
+class GameInteractor(private val repository: IGameRepository): GameUseCase {
+    override fun loadGames(): Flow<PagingData<Game>> = repository.loadGames()
+
+    override fun searchGames(query: String): Flow<List<Game>> = repository.searchGames(query)
+
+    override fun loadDetailGame(id: Int): Flow<Game> = repository.loadDetailGame(id)
+
+    override fun loadFavoriteGames(): Flow<List<Game>> = repository.loadFavoriteGames()
+
+    override suspend fun insertFavorite(game: Game) = repository.insertFavorite(game)
+
+    override suspend fun updateFavorite(game: Game) = repository.updateFavorite(game)
 }

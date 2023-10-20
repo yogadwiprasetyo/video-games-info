@@ -14,6 +14,8 @@ import technical.test.yprsty.data.source.locale.room.GameDatabase
 import technical.test.yprsty.data.source.remote.RemoteDataSource
 import technical.test.yprsty.data.source.remote.network.ApiService
 import technical.test.yprsty.domain.repository.IGameRepository
+import technical.test.yprsty.domain.usecase.GameInteractor
+import technical.test.yprsty.domain.usecase.GameUseCase
 import java.util.concurrent.TimeUnit
 
 val databaseModule = module {
@@ -64,7 +66,7 @@ val dataLayerModule = module {
 }
 
 val domainLayerModule = module {
-
+    factory<GameUseCase> { GameInteractor(get()) }
 }
 
 val presentationModule = module {
