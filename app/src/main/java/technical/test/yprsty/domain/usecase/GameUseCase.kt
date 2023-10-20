@@ -9,6 +9,5 @@ interface GameUseCase {
     fun searchGames(query: String): Flow<List<Game>>
     fun loadDetailGame(id: Int): Flow<Game>
     fun loadFavoriteGames(): Flow<List<Game>>
-    suspend fun insertFavorite(game: Game)
-    suspend fun updateFavorite(game: Game)
+    suspend fun updateFavorite(id: Int)
 }

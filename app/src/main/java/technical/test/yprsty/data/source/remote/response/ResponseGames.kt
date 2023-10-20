@@ -20,13 +20,13 @@ data class ResponseGames(
 data class GameItem(
 
 	@field:SerializedName("background_image")
-	val backgroundImage: String,
+	val backgroundImage: String?,
 
 	@field:SerializedName("name")
 	val name: String,
 
 	@field:SerializedName("rating")
-	val rating: Int,
+	val rating: Double,
 
 	@field:SerializedName("id")
 	val id: Int,

@@ -7,22 +7,12 @@ import technical.test.yprsty.domain.model.Game
 
 object DataMapper {
 
-    fun mapGameResponseToDomain(game: ResponseGame): Game = Game(
+    private fun mapGameItemResponseToDomain(game: GameItem): Game = Game(
         id = game.id,
         name = game.name,
-        uriBackgroundImage = game.backgroundImage,
+        uriBackgroundImage = game.backgroundImage ?: "",
         playTime = game.playtime,
-        rating = game.rating,
-        description = game.description,
-        releasedDate = game.released,
-    )
-
-    fun mapGameItemResponseToDomain(game: GameItem): Game = Game(
-        id = game.id,
-        name = game.name,
-        uriBackgroundImage = game.backgroundImage,
-        playTime = game.playtime,
-        rating = game.rating,
+        rating = game.rating.toString(),
     )
 
     fun mapGamesResponseToDomain(games: List<GameItem>): List<Game> =
@@ -42,14 +32,13 @@ object DataMapper {
     fun mapGamesEntityToDomain(entities: List<GameEntity>): List<Game> =
         entities.map { mapGameEntityToDomain(it) }
 
-    fun mapDomainToGameEntity(game: Game): GameEntity = GameEntity(
+    fun mapGameResponseToEntity(game: ResponseGame): GameEntity = GameEntity(
         id = game.id,
         name = game.name,
         description = game.description,
-        releasedDate = game.releasedDate,
-        urlBackgroundImage = game.uriBackgroundImage,
-        playTime = game.playTime,
-        rating = game.rating,
-        isFavorite = game.isFavorite
+        releasedDate = game.released,
+        urlBackgroundImage = game.backgroundImage,
+        playTime = game.playtime,
+        rating = game.rating.toString(),
     )
 }

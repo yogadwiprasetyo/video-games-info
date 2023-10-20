@@ -12,6 +12,6 @@ data class GameEntity(
     val releasedDate: String,
     val urlBackgroundImage: String,
     val playTime: Int,
-    val rating: Int,
-    val isFavorite: Boolean = false
+    val rating: String,
+    var isFavorite: Boolean = false
 )

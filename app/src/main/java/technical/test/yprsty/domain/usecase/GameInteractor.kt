@@ -14,7 +14,5 @@ class GameInteractor(private val repository: IGameRepository): GameUseCase {
 
     override fun loadFavoriteGames(): Flow<List<Game>> = repository.loadFavoriteGames()
 
-    override suspend fun insertFavorite(game: Game) = repository.insertFavorite(game)
-
-    override suspend fun updateFavorite(game: Game) = repository.updateFavorite(game)
+    override suspend fun updateFavorite(id: Int) = repository.updateFavorite(id)
 }

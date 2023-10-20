@@ -18,7 +18,8 @@ interface ApiService {
     @GET("games")
     suspend fun searchGames(
         @Query("key") apiKey: String,
-        @Query("search") query: String
+        @Query("search") query: String,
+        @Query("search_precise") preciseResult: Boolean = true
     ): ResponseGames
 
     @GET("games/{id}")

@@ -20,7 +20,7 @@ data class ResponseGame(
 	val playtime: Int,
 
 	@field:SerializedName("rating")
-	val rating: Int,
+	val rating: Double,
 
 	@field:SerializedName("released")
 	val released: String

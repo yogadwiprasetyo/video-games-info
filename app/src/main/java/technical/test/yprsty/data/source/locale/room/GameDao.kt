@@ -11,10 +11,10 @@ import technical.test.yprsty.data.source.locale.entity.GameEntity
 @Dao
 interface GameDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(game: GameEntity)
+    fun insert(game: GameEntity): Long
 
     @Update
-    suspend fun update(game: GameEntity)
+    suspend fun update(game: GameEntity): Int
 
     @Query("SELECT * FROM game WHERE isFavorite = 1")
     fun getFavorites(): Flow<List<GameEntity>>
