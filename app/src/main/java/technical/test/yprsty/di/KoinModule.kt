@@ -7,6 +7,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import technical.test.yprsty.data.paging.GamePagingSource
 import technical.test.yprsty.data.source.locale.LocaleDataSource
 import technical.test.yprsty.data.source.locale.room.GameDatabase
 import technical.test.yprsty.data.source.remote.RemoteDataSource
@@ -51,6 +52,9 @@ val dataLayerModule = module {
     }
     single {
         RemoteDataSource(get())
+    }
+    factory {
+        GamePagingSource(get())
     }
 }
 
