@@ -15,5 +15,5 @@ class LocaleDataSource(private val dao: GameDao) {
 
     fun getFavorites(): Flow<List<GameEntity>> = dao.getFavorites()
 
-    fun getDetail(id: Int): Flow<GameEntity> = dao.getDetail(id)
+    fun getDetail(id: Int): Flow<GameEntity?> = dao.getDetail(id)
 }

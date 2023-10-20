@@ -9,7 +9,7 @@ data class GameEntity(
     val id: Int,
     val name: String,
     val description: String,
-    val releasedData: String,
+    val releasedDate: String,
     val urlBackgroundImage: String,
     val playTime: Int,
     val rating: Int,

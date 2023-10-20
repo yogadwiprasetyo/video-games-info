@@ -20,5 +20,5 @@ interface GameDao {
     fun getFavorites(): Flow<List<GameEntity>>
 
     @Query("SELECT * FROM game WHERE id = :id")
-    fun getDetail(id: Int): Flow<GameEntity>
+    fun getDetail(id: Int): Flow<GameEntity?>
 }
