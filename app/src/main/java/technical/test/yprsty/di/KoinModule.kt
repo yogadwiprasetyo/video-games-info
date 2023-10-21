@@ -4,6 +4,7 @@ import androidx.room.Room
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -16,6 +17,10 @@ import technical.test.yprsty.data.source.remote.network.ApiService
 import technical.test.yprsty.domain.repository.IGameRepository
 import technical.test.yprsty.domain.usecase.GameInteractor
 import technical.test.yprsty.domain.usecase.GameUseCase
+import technical.test.yprsty.presentation.detail.DetailViewModel
+import technical.test.yprsty.presentation.favorite.FavoriteViewModel
+import technical.test.yprsty.presentation.home.HomeViewModel
+import technical.test.yprsty.presentation.search.SearchViewModel
 import java.util.concurrent.TimeUnit
 
 val databaseModule = module {
@@ -70,5 +75,8 @@ val domainLayerModule = module {
 }
 
 val presentationModule = module {
-
+    viewModel { HomeViewModel(get()) }
+    viewModel { SearchViewModel(get()) }
+    viewModel { FavoriteViewModel(get()) }
+    viewModel { DetailViewModel(get()) }
 }
