@@ -5,7 +5,7 @@ import kotlinx.coroutines.flow.Flow
 import technical.test.yprsty.domain.model.Game
 import technical.test.yprsty.domain.repository.IGameRepository
 
-class GameInteractor(private val repository: IGameRepository): GameUseCase {
+class GameInteractor(private val repository: IGameRepository) : GameUseCase {
     override fun loadGames(): Flow<PagingData<Game>> = repository.loadGames()
 
     override fun searchGames(query: String): Flow<List<Game>> = repository.searchGames(query)

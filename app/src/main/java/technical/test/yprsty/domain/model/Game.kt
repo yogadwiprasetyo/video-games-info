@@ -5,7 +5,7 @@ data class Game(
     val name: String,
     val uriBackgroundImage: String,
     val playTime: Int,
-    val rating: Int,
+    val rating: String,
     val releasedDate: String = "",
     val description: String = "",
     val isFavorite: Boolean = false
