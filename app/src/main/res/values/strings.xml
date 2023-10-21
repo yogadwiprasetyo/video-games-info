@@ -5,5 +5,15 @@
     <string name="menu_navigation_home">Home</string>
     <string name="menu_navigation_search">Search</string>
     <string name="menu_navigation_favorite">Favorite</string>
-    
+
+    <!-- GLOBAL -->
+    <string name="content_description_image">Image</string>
+    <string name="content_description_icon">Icon</string>
+    <string name="title_release_date">Release Date</string>
+    <string name="play_time_hours">%1$s Hours</string>
+    <string name="hint_query">Search your favorite games</string>
+    <string name="btn_text_refresh">Refresh</string>
+    <string name="empty_info">You\'re not have favorite games</string>
+    <string name="no_data">No data</string>
+    <string name="error_info">Oops! Something Wrong.</string>
 </resources>
