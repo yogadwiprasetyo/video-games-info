@@ -10,12 +10,11 @@ import androidx.navigation.fragment.findNavController
 import com.jakewharton.rxbinding4.widget.textChanges
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import technical.test.core.presentation.adapter.GameAdapter
+import technical.test.core.utils.loadImage
+import technical.test.core.utils.setup
 import technical.test.yprsty.R
 import technical.test.yprsty.databinding.FragmentSearchBinding
-import technical.test.yprsty.domain.model.Game
-import technical.test.yprsty.presentation.adapter.GameAdapter
-import technical.test.yprsty.utils.extension.loadImage
-import technical.test.yprsty.utils.extension.setup
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
@@ -108,7 +107,7 @@ class SearchFragment : Fragment() {
         )
     }
 
-    private fun onSuccess(resultGames: List<Game>) {
+    private fun onSuccess(resultGames: List<technical.test.core.domain.model.Game>) {
         gameAdapter.submitList(null)
         gameAdapter.submitList(resultGames)
         showViewBasedOnState(

@@ -5,10 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.navigation.navArgs
 import org.koin.android.ext.android.inject
+import technical.test.core.domain.model.Game
+import technical.test.core.utils.loadImage
 import technical.test.yprsty.R
 import technical.test.yprsty.databinding.ActivityDetailBinding
-import technical.test.yprsty.domain.model.Game
-import technical.test.yprsty.utils.extension.loadImage
 import timber.log.Timber
 
 class DetailActivity : AppCompatActivity() {

@@ -9,13 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.paging.PagingData
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import technical.test.core.utils.loadImage
+import technical.test.core.utils.setup
 import technical.test.yprsty.R
 import technical.test.yprsty.databinding.FragmentHomeBinding
-import technical.test.yprsty.domain.model.Game
-import technical.test.yprsty.presentation.adapter.GamePagingAdapter
-import technical.test.yprsty.presentation.adapter.LoadingStateAdapter
-import technical.test.yprsty.utils.extension.loadImage
-import technical.test.yprsty.utils.extension.setup
 import timber.log.Timber
 
 class HomeFragment : Fragment() {
@@ -24,7 +21,7 @@ class HomeFragment : Fragment() {
 
     private val viewModel by viewModel<HomeViewModel>()
 
-    private lateinit var gamePagingAdapter: GamePagingAdapter
+    private lateinit var gamePagingAdapter: technical.test.core.presentation.adapter.GamePagingAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,12 +40,12 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupView() {
-        gamePagingAdapter = GamePagingAdapter { gameId ->
+        gamePagingAdapter = technical.test.core.presentation.adapter.GamePagingAdapter { gameId ->
             val action = HomeFragmentDirections.actionNavigationHomeToDetailActivity(gameId)
             findNavController().navigate(action)
         }
         gamePagingAdapter.withLoadStateFooter(
-            footer = LoadingStateAdapter { gamePagingAdapter.retry() }
+            footer = technical.test.core.presentation.adapter.LoadingStateAdapter { gamePagingAdapter.retry() }
         )
         binding.rvGames.setup(gamePagingAdapter)
     }
@@ -76,7 +73,7 @@ class HomeFragment : Fragment() {
         showViewBasedOnState(isLoading = false, isError = true, isSuccess = false)
     }
 
-    private fun onSuccess(gamePagingData: PagingData<Game>) {
+    private fun onSuccess(gamePagingData: PagingData<technical.test.core.domain.model.Game>) {
         gamePagingAdapter.submitData(lifecycle, gamePagingData)
         showViewBasedOnState(isLoading = false, isError = false, isSuccess = true)
     }

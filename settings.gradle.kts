@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Video Games Info"
 include(":app")
+include(":core")

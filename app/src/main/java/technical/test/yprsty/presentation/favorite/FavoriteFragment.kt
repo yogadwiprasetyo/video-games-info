@@ -8,12 +8,10 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import technical.test.core.utils.loadImage
+import technical.test.core.utils.setup
 import technical.test.yprsty.R
 import technical.test.yprsty.databinding.FragmentFavoriteBinding
-import technical.test.yprsty.domain.model.Game
-import technical.test.yprsty.presentation.adapter.GameAdapter
-import technical.test.yprsty.utils.extension.loadImage
-import technical.test.yprsty.utils.extension.setup
 import timber.log.Timber
 
 class FavoriteFragment : Fragment() {
@@ -22,7 +20,7 @@ class FavoriteFragment : Fragment() {
 
     private val viewModel by viewModel<FavoriteViewModel>()
 
-    private lateinit var gameAdapter: GameAdapter
+    private lateinit var gameAdapter: technical.test.core.presentation.adapter.GameAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,7 +43,7 @@ class FavoriteFragment : Fragment() {
     }
 
     private fun setupView() {
-        gameAdapter = GameAdapter { gameId ->
+        gameAdapter = technical.test.core.presentation.adapter.GameAdapter { gameId ->
             val action = FavoriteFragmentDirections.actionNavigationFavoriteToDetailActivity(gameId)
             findNavController().navigate(action)
         }
@@ -77,7 +75,7 @@ class FavoriteFragment : Fragment() {
         showViewBasedOnState(isError = true, isSuccess = false, isEmpty = false)
     }
 
-    private fun onSuccess(favoriteGames: List<Game>) {
+    private fun onSuccess(favoriteGames: List<technical.test.core.domain.model.Game>) {
         gameAdapter.submitList(null)
         gameAdapter.submitList(favoriteGames)
         showViewBasedOnState(isError = false, isSuccess = true, isEmpty = false)

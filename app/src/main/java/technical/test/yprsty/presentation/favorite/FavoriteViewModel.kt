@@ -6,8 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
-import technical.test.yprsty.domain.model.Game
-import technical.test.yprsty.domain.usecase.GameUseCase
+import technical.test.core.domain.usecase.GameUseCase
 import timber.log.Timber
 
 class FavoriteViewModel(private val useCase: GameUseCase) : ViewModel() {
@@ -35,7 +34,7 @@ class FavoriteViewModel(private val useCase: GameUseCase) : ViewModel() {
 }
 
 sealed class FavoriteGamesUiState {
-    data class Success(val gameFavorites: List<Game>) : FavoriteGamesUiState()
+    data class Success(val gameFavorites: List<technical.test.core.domain.model.Game>) : FavoriteGamesUiState()
     data class Error(val throwable: Throwable) : FavoriteGamesUiState()
     data object Empty : FavoriteGamesUiState()
 }

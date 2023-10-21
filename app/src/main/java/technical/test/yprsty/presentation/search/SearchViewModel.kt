@@ -6,8 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
-import technical.test.yprsty.domain.model.Game
-import technical.test.yprsty.domain.usecase.GameUseCase
+import technical.test.core.domain.usecase.GameUseCase
 import timber.log.Timber
 
 class SearchViewModel(private val useCase: GameUseCase) : ViewModel() {
@@ -41,7 +40,7 @@ class SearchViewModel(private val useCase: GameUseCase) : ViewModel() {
 }
 
 sealed class SearchGamesUiState {
-    data class Success(val results: List<Game>) : SearchGamesUiState()
+    data class Success(val results: List<technical.test.core.domain.model.Game>) : SearchGamesUiState()
     data class Error(val throwable: Throwable) : SearchGamesUiState()
     data object Loading : SearchGamesUiState()
     data object Empty : SearchGamesUiState()

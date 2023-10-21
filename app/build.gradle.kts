@@ -1,11 +1,10 @@
 import dependency.AppDependencies
+import dependency.SharedDependency
 import projectRoot.AppConfig
 
 plugins {
     id(projectRoot.BuildPlugins.androidApplication)
     id(projectRoot.BuildPlugins.kotlinAndroid)
-    id(projectRoot.BuildPlugins.kotlinParcelize)
-    id(projectRoot.BuildPlugins.kotlinKsp)
     id(projectRoot.BuildPlugins.navigationArgs)
 }
 
@@ -21,7 +20,6 @@ android {
         versionName = AppConfig.versionName
 
         testInstrumentationRunner = AppConfig.androidTestInstrumentation
-        buildConfigField(AppConfig.fieldTypeApiKey, AppConfig.fieldNameApiKey, AppConfig.apiKey)
     }
 
     buildTypes {
@@ -47,35 +45,7 @@ android {
 }
 
 dependencies {
-    implementation(AppDependencies.coreKtx)
-    implementation(AppDependencies.appCompat)
-    implementation(AppDependencies.material)
-    implementation(AppDependencies.constraintLayout)
-
-    // Jetpack Libs
-    implementation(AppDependencies.paging3)
-    implementation(AppDependencies.navFragment)
-    implementation(AppDependencies.navUi)
-    implementation(AppDependencies.lifecycleViewModel)
-    implementation(AppDependencies.lifecycleLiveData)
-    implementation(AppDependencies.roomRuntime)
-    ksp(AppDependencies.roomCompiler)
-    implementation(AppDependencies.roomKtx)
-    implementation(AppDependencies.roomPaging)
-
-    // Third-party Libraries
-    implementation(AppDependencies.koin)
-    implementation(AppDependencies.glide)
-    implementation(AppDependencies.retrofit)
-    implementation(AppDependencies.retrofitConverterGson)
-    implementation(platform(AppDependencies.okhttpBoom))
-    implementation(AppDependencies.okhttp)
-    implementation(AppDependencies.okhttpLogging)
-    implementation(AppDependencies.rxBinding)
-    implementation(AppDependencies.timber)
-
-    // Testing
-    testImplementation(AppDependencies.junit)
-    androidTestImplementation(AppDependencies.extJunit)
-    androidTestImplementation(AppDependencies.espressoCore)
+    SharedDependency.allDependency.forEach { implementation(it) }
+    AppDependencies.allDependency.forEach { implementation(it) }
+    implementation(project(":core"))
 }
