@@ -1,22 +1,27 @@
+import dependency.AppDependencies
+import projectRoot.AppConfig
+
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("kotlin-parcelize")
-    id("com.google.devtools.ksp")
+    id(projectRoot.BuildPlugins.androidApplication)
+    id(projectRoot.BuildPlugins.kotlinAndroid)
+    id(projectRoot.BuildPlugins.kotlinParcelize)
+    id(projectRoot.BuildPlugins.kotlinKsp)
+    id(projectRoot.BuildPlugins.navigationArgs)
 }
 
 android {
-    namespace = "technical.test.yprsty"
-    compileSdk = 34
+    namespace = AppConfig.nameSpace
+    compileSdk = AppConfig.compileSdk
 
     defaultConfig {
-        applicationId = "technical.test.yprsty"
-        minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = AppConfig.applicationId
+        minSdk = AppConfig.minSdk
+        targetSdk = AppConfig.targetSdk
+        versionCode = AppConfig.versionCode
+        versionName = AppConfig.versionName
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = AppConfig.androidTestInstrumentation
+        buildConfigField(AppConfig.fieldTypeApiKey, AppConfig.fieldNameApiKey, AppConfig.apiKey)
     }
 
     buildTypes {
@@ -37,60 +42,40 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
 dependencies {
-    val pagingVersion = "3.2.1"
-    val koinAndroidVersion = "3.5.0"
-    val lifecycleVersion = "2.6.2"
-    val roomVersion = "2.6.0"
-    val glideVersion = "4.16.0"
-    val retrofitVersion = "2.9.0"
-    val okhttpVersion = "4.11.0"
-    val rxBindingVersion = "4.0.0"
-    val navVersion = "2.7.4"
-    val timberVersion = "5.0.1"
+    implementation(AppDependencies.coreKtx)
+    implementation(AppDependencies.appCompat)
+    implementation(AppDependencies.material)
+    implementation(AppDependencies.constraintLayout)
 
-    // Default
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.10.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-
-    // Jetpack Libraries
-    // Paging3
-    implementation("androidx.paging:paging-runtime-ktx:$pagingVersion")
-    // Navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
-    implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
-    // Lifecycle (ViewModel & LiveData)
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
-    // Room
-    implementation("androidx.room:room-runtime:$roomVersion")
-    ksp("androidx.room:room-compiler:$roomVersion")
-    implementation("androidx.room:room-ktx:$roomVersion")
-    implementation("androidx.room:room-paging:$roomVersion")
+    // Jetpack Libs
+    implementation(AppDependencies.paging3)
+    implementation(AppDependencies.navFragment)
+    implementation(AppDependencies.navUi)
+    implementation(AppDependencies.lifecycleViewModel)
+    implementation(AppDependencies.lifecycleLiveData)
+    implementation(AppDependencies.roomRuntime)
+    ksp(AppDependencies.roomCompiler)
+    implementation(AppDependencies.roomKtx)
+    implementation(AppDependencies.roomPaging)
 
     // Third-party Libraries
-    // Koin (Dependency Injection)
-    implementation("io.insert-koin:koin-android:$koinAndroidVersion")
-    // Glide (Image)
-    implementation("com.github.bumptech.glide:glide:$glideVersion")
-    // Network (Retrofit, GSON, OkHttp3)
-    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
-    implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
-    implementation(platform("com.squareup.okhttp3:okhttp-bom:$okhttpVersion"))
-    implementation("com.squareup.okhttp3:okhttp")
-    implementation("com.squareup.okhttp3:logging-interceptor")
-    // RxBinding (Reactive)
-    implementation("com.jakewharton.rxbinding4:rxbinding:$rxBindingVersion")
-    // Timber
-    implementation("com.jakewharton.timber:timber:$timberVersion")
+    implementation(AppDependencies.koin)
+    implementation(AppDependencies.glide)
+    implementation(AppDependencies.retrofit)
+    implementation(AppDependencies.retrofitConverterGson)
+    implementation(platform(AppDependencies.okhttpBoom))
+    implementation(AppDependencies.okhttp)
+    implementation(AppDependencies.okhttpLogging)
+    implementation(AppDependencies.rxBinding)
+    implementation(AppDependencies.timber)
 
     // Testing
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    testImplementation(AppDependencies.junit)
+    androidTestImplementation(AppDependencies.extJunit)
+    androidTestImplementation(AppDependencies.espressoCore)
 }
