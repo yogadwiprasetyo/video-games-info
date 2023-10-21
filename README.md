@@ -11,6 +11,7 @@ Feature:
 Architecture:
 - MVVM (Model-View-ViewModel)
 - Clean Architecture (presentation, domain, data)
+- Multi-module (app & core)
   
 Libraries:
 - Jetpack (Paging3, Navigation, Lifecycle, Room)
