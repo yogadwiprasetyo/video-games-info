@@ -8,6 +8,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import technical.test.core.presentation.adapter.GameAdapter
 import technical.test.core.utils.loadImage
 import technical.test.core.utils.setup
 import technical.test.yprsty.R
@@ -20,7 +21,7 @@ class FavoriteFragment : Fragment() {
 
     private val viewModel by viewModel<FavoriteViewModel>()
 
-    private lateinit var gameAdapter: technical.test.core.presentation.adapter.GameAdapter
+    private lateinit var gameAdapter: GameAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,7 +44,7 @@ class FavoriteFragment : Fragment() {
     }
 
     private fun setupView() {
-        gameAdapter = technical.test.core.presentation.adapter.GameAdapter { gameId ->
+        gameAdapter = GameAdapter { gameId ->
             val action = FavoriteFragmentDirections.actionNavigationFavoriteToDetailActivity(gameId)
             findNavController().navigate(action)
         }

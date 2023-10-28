@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
+import technical.test.core.domain.model.Game
 import technical.test.core.domain.usecase.GameUseCase
 import timber.log.Timber
 
@@ -43,7 +44,7 @@ class DetailViewModel(private val useCase: GameUseCase) : ViewModel() {
 }
 
 sealed class GameUiState {
-    data class Success(val game: technical.test.core.domain.model.Game) : GameUiState()
+    data class Success(val game: Game) : GameUiState()
     data class Error(val throwable: Throwable) : GameUiState()
     data object Loading : GameUiState()
 }

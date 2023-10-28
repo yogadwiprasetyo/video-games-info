@@ -10,6 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import technical.test.core.data.GameRepository
 import technical.test.core.data.paging.GamePagingSource
 import technical.test.core.data.source.locale.LocaleDataSource
+import technical.test.core.data.source.locale.room.GameDatabase
 import technical.test.core.data.source.remote.RemoteDataSource
 import technical.test.core.data.source.remote.network.ApiService
 import technical.test.core.domain.repository.IGameRepository
@@ -18,11 +19,11 @@ import technical.test.core.domain.usecase.GameUseCase
 import java.util.concurrent.TimeUnit
 
 val databaseModule = module {
-    factory { get<technical.test.core.data.source.locale.room.GameDatabase>().gameDao() }
+    factory { get<GameDatabase>().gameDao() }
     single {
         Room.databaseBuilder(
             androidContext(),
-            technical.test.core.data.source.locale.room.GameDatabase::class.java,
+            GameDatabase::class.java,
             "VideoGame.db"
         )
             .fallbackToDestructiveMigration()

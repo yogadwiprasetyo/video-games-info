@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.paging.PagingData
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import technical.test.core.presentation.adapter.GamePagingAdapter
+import technical.test.core.presentation.adapter.LoadingStateAdapter
 import technical.test.core.utils.loadImage
 import technical.test.core.utils.setup
 import technical.test.yprsty.R
@@ -21,7 +23,7 @@ class HomeFragment : Fragment() {
 
     private val viewModel by viewModel<HomeViewModel>()
 
-    private lateinit var gamePagingAdapter: technical.test.core.presentation.adapter.GamePagingAdapter
+    private lateinit var gamePagingAdapter: GamePagingAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,12 +42,12 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupView() {
-        gamePagingAdapter = technical.test.core.presentation.adapter.GamePagingAdapter { gameId ->
+        gamePagingAdapter = GamePagingAdapter { gameId ->
             val action = HomeFragmentDirections.actionNavigationHomeToDetailActivity(gameId)
             findNavController().navigate(action)
         }
         gamePagingAdapter.withLoadStateFooter(
-            footer = technical.test.core.presentation.adapter.LoadingStateAdapter { gamePagingAdapter.retry() }
+            footer = LoadingStateAdapter { gamePagingAdapter.retry() }
         )
         binding.rvGames.setup(gamePagingAdapter)
     }

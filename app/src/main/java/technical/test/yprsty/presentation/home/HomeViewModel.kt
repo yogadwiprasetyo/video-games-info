@@ -8,6 +8,7 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
+import technical.test.core.domain.model.Game
 import technical.test.core.domain.usecase.GameUseCase
 import timber.log.Timber
 
@@ -32,7 +33,7 @@ class HomeViewModel(private val useCase: GameUseCase) : ViewModel() {
 }
 
 sealed class GamesUiState {
-    data class Success(val games: PagingData<technical.test.core.domain.model.Game>) : GamesUiState()
+    data class Success(val games: PagingData<Game>) : GamesUiState()
     data class Error(val exception: Throwable) : GamesUiState()
     data object Loading : GamesUiState()
 }
